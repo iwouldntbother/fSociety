@@ -1,0 +1,81 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500;600;700&display=swap');
+
+/* Main CSS */
+
+:root {
+    --directory: "";
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #333;
+    pointer-events: none;
+}
+
+/* Terminal */
+
+#terminalContainer {
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    pointer-events: none;
+}
+
+.terminalLine {
+    font-family: 'Inconsolata', monospace;
+    margin: 0;
+    margin-top: 0.3vw;
+    margin-left: 1vw;
+}
+
+/* .input::before {
+    content: "admin@kali ~/: ";
+    color: red;
+} */
+
+#terminalOutputHolder {
+    max-height: 100%;
+    width: 100%;
+}
+
+#terminalInputHolder {
+    width: 100vw;
+}
+
+#terminalInput {
+    width: 97vw;
+    margin-left: 1vw;
+    font-family: 'Inconsolata', monospace;
+    user-select: none;
+    background-color: transparent;
+    pointer-events: all;
+}
+
+#terminalInput::before {
+    content: "admin@kali ~/: ";
+}
+
+#terminalInput::after {
+    content: "▊";
+    animation: blink-animation 1s steps(5, start) infinite
+}
+
+#terminalInput:focus {
+    outline: none;
+}
+
+@keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+}

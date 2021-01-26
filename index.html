@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fSociety</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+</head>
+<body>
+    
+
+    <div id="terminalContainer">
+
+        <div id="storyHolder">
+            <br>
+            <p class="terminalLine output">Welcome!</p>
+            <p class="terminalLine output">This is a small terminal emulator game</p>
+            <p class="terminalLine output">Explore and have fun!</p>
+            <p class="terminalLine output">Type 'help' to see a list of commands and 'hint' for a puzzle hint :)</p>
+            <br>
+            <hr>
+        </div>
+
+        <div id="terminalOutputHolder">
+        </div>
+    
+        <div id="terminalInputHolder" onclick="terminalFocus()">
+            <span id="terminalInput" contenteditable="true"></span>
+        </div>
+    
+    </div>
+
+    <script src="js/pathways.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
