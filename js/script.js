@@ -7,22 +7,69 @@ var beforeString = "admin@kali " + currentDir + ": ";
 var defaultMode = true;
 var trustTest = false;
 var investigate = false;
-
+var currentHint = "You've just started, at least try by yourself!"
 
 var commandHistory = [];
 var commandPosition;
 
 // document.querySelector(':root').style.setProperty('--directory', "admin@kali " + currentDir + ": ")
 
-window.setTimeout(function(){
-    gameOver(0);
-}, 300000)
+window.addEventListener("keypress",startListener)
+
+function startListener(e) {
+    if (e.code == "Space") {
+        e.preventDefault();
+        init();
+    }
+}
+
+function init() {
+
+    window.removeEventListener("keypress",startListener);
+    document.getElementById("endingContainer").style.opacity = 0;
+    terminalFocus();
+    terminalInput.addEventListener('blur', function(e){
+        e.target.focus();
+    })
+    startTimer();
+
+}
+
+function startTimer() {
+
+    console.log("Timer started")
+    
+    window.setTimeout(function(){
+        currentHint = "Okay, maybe look for some suspicious files?"
+    }, 60000)
+
+    window.setTimeout(function(){
+        currentHint = "The rootkit folder looks weird..."
+    }, 120000)
+
+    window.setTimeout(function(){
+        currentHint = "You've taken 3 minutes already, try opening the rootkit script file?"
+        hintFunction("You've taken 3 minutes already, try opening the rootkit script file?")
+    }, 180000)
+    
+    window.setTimeout(function(){
+        currentHint = "You've got less than a minute left, Are you gonna do anything? Maybe just give up"
+        hintFunction("You've got less than a minute left, Are you gonna do anything? Maybe just give up")
+    }, 180000)
+
+    window.setTimeout(function(){
+        gameOver(0);
+    }, 300000)
+
+}
+
+
 
 function terminalFocus() {
     terminalInput.focus();
 }
 
-terminalFocus();
+// terminalFocus();
 
 terminalInput.addEventListener('keydown', function(e){
     var command = terminalInput.innerHTML
@@ -86,9 +133,7 @@ terminalInput.addEventListener('keydown', function(e){
 
 });
 
-terminalInput.addEventListener('blur', function(e){
-    e.target.focus();
-})
+
 
 function input(string) {
     terminalOutputHolder.innerHTML += "<p class='terminalLine'>" + "admin@kali " + currentDir + ": " + string + "</p>"
@@ -126,8 +171,8 @@ function runCommand(command) {
         hintFunction()
     } else if (instruction == "open") {
         openFunction(variable)
-    // }  else if (instruction == "open") {
-    //     openFunction()
+    }  else if (instruction == "shutdown") {
+        shutdownFunction()
     } else {
         if (!(instruction in commands)) {
             output(["Command not found!"])
@@ -210,9 +255,9 @@ function helpFunction() {
 
 function hintFunction(text) {
     if (text) {
-        console.log(text)
+        document.getElementById("hintBox").innerHTML = text;
     } else {
-        console.log("Generating hint")
+        document.getElementById("hintBox").innerHTML = currentHint;
     }
 }
 
@@ -337,6 +382,10 @@ function trustTestOption(option) {
         rootkitOption("2");
         trustTest = false;
     }
+}
+
+function shutdownFunction(){
+    gameOver(0);
 }
 
 function gameOver(ending) {

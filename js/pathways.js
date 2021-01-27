@@ -48,10 +48,11 @@ const directoryMap = {
 
 const commands = {
     "help, ?": "Use: \"help\"; Opens this dialogue.",
-    "hint": "Use: \"hint\"; Displays a hint in the story dialogue box at the top.",
+    "hint, !": "Use: \"hint\"; Displays a hint in the story dialogue box at the top.",
     "ls": "Use: \"ls\"; Lists files in current directory.",
     "cd": "Use: \"cd [targetDirectory]\"; Changes Directory.",
-    "open": "Use \"open [file]\"; Opens a file for you."
+    "open": "Use \"open [file]\"; Opens a file for you.",
+    "shutdown": "Use \"shutdown\"; Shuts the server down."
 }
 
 const files = ["fSociety.sh", "README.md", "passwords.txt"]
@@ -59,7 +60,7 @@ const files = ["fSociety.sh", "README.md", "passwords.txt"]
 const endings = [
     {
         "title": "Useless",
-        "description": "You took way too long and now the system has crashed!<br>You quit before you get fired and now you live alone on a private island with 20 cats."
+        "description": "The system has crashed!<br>You quit before you get fired and now you live alone on a private island with 20 cats."
     },
     {
         "title": "You Got Scared",
