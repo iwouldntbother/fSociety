@@ -79,3 +79,35 @@ body {
       visibility: hidden;
     }
 }
+
+/* Ending Screen */
+
+#endingContainer {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+#endingCover {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.6;
+}
+
+#endingHolder {
+    background-color: black;
+    color: white;
+    font-family: 'Inconsolata', monospace;
+    padding: 2vw;
+    z-index: 10;
+}
